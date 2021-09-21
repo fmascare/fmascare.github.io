@@ -11,18 +11,56 @@ body {
 }
 
 #background {
-    background-image: url("../img/carousel-img1.jpg");
-    background-size: cover;
+    overflow: hidden;
+    opacity: 0.2;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    opacity: 0.2;
 }
 
-#background.animate {
-    animation: slide 4s both alternate;
+#background figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 25s slide infinite;
+}
+
+#background figure img {
+    width: 20%;
+    float: left;
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%:
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
 }
 
 .topmenu {
@@ -199,11 +237,8 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    #background {
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 200px;
-        object-fit: cover;
+    #background figure img {
+        height: 250px;
     }
    .topnav {
         width: 250px;

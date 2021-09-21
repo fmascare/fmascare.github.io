@@ -3,62 +3,6 @@
 var projurl = "https://fmascare.github.io/JavaScriptProjects";
 var linkedinurl = "https://www.linkedin.com/in/faricamascarenhas";
 var giturl = "https://github.com/fmascare";
-localStorage.clickcount = 1;
-var maxBackgroundImages = 7;
-
-//background pic change functions
-function AddKeyFramesRule(rule) {
-    var style = document.createElement("style");
-    style.appendChild(document.createTextNode(""));
-    document.head.appendChild(style);
-    var sheet = style.sheet;
-    if (localStorage.clickcount < maxBackgroundImages) {
-        localStorage.clickcount = Number(localStorage.clickcount) + 1;
-    }
-    else {
-        localStorage.clickcount = 0;
-    }
-    var img = `../img/carousel-img${localStorage.clickcount}.jpg`;
-    if(Number(localStorage.clickcount) % 2 == 1) {
-        var keyframeRule = `50% { transform: translate(95%); transition: 5s;}
-                        80% { transform: translate(0); transition: 5s;} 
-                        100% { background-image: url(${img}); }`;
-    
-        var keyframe = `@keyframes ${rule} { ${keyframeRule} }`;
-        sheet.insertRule(keyframe);
-    }
-    return img;
-}
-
-function checkIfImageExists(imgPath) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('HEAD',imgPath,false);
-    xhr.send();
-    
-    if(xhr.status == '404') {
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-function change(anim) {
-    if (document.getElementById("background").classList.contains("animate")) {
-        document.getElementById("background").classList.remove("animate");
-    }
-    else {
-        document.getElementById("background").classList.add("animate");
-    }
-    var imgPath = AddKeyFramesRule(anim);
-    if(Number(localStorage.clickcount) % 2 == 1) {
-        document.getElementById("background").style.backgroundImage = `url('${imgPath}')`;
-    }
-}
-
-function startChange() {
-    setInterval(function(){change("slide");}, 30000);
-}
 
 //function to display and close navigation menu displayed at the
 //top of the screen when window is resized
@@ -199,6 +143,3 @@ if (resumeListener) {
         window.open("./files/Farica_Mascarenhas_Resume.pdf", '_blank').focus();
     });
 }
-
-//Trigger background updates every 30s
-startChange();
