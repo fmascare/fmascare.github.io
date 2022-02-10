@@ -136,7 +136,7 @@ body {
     height: 250px;
     border-radius: 100%;
     object-fit: cover;
-    object-position: center right;
+    object-position: center top;
 }
 
 .main-content .head {
